@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Hollywood Hollywood</string>
+
+    <!-- -
+        This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="banner_ad_unit_id">ca-app-pub-5152778234781012/3773330260</string>
+    <string name="select_level">Select Level:</string>
+    <string name="b_easy">EASY</string>
+    <string name="b_medium">MEDIUM</string>
+    <string name="b_difficult">DIFFICULT</string>
+    <string name="b_very_difficult">VERY DIFFICULT</string>
+    <string name="b_play">PLAY</string>
+
+</resources>

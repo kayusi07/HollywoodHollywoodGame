@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RatingBar
+        android:id="@+id/rate"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:numStars="5"
+        android:rating="2.5"/>
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:layout_margin="20dp"
+        android:fontFamily="cursive"
+        android:text="You Won"/>
+
+
+    <RelativeLayout
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true">
+
+        <TextView
+            android:id="@+id/tx1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="cursive"
+            android:text="Total Score : "/>
+
+        <TextView
+            android:id="@+id/txt_total_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tx1"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="cursive"
+            android:text=" 0 "/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/txt_high_score"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="cursive"
+            android:text="Highest Score : "/>
+
+        <TextView
+            android:id="@+id/txt_high_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_alignParentRight="true"
+            android:fontFamily="cursive"
+            android:text=" 0 "/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/next_game"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:background="@drawable/button_round"
+        android:text="NEXT"
+        tools:ignore="UnknownId" />
+</LinearLayout>
+
+    <!-- view for AdMob Banner Ad -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewpop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        android:layout_alignParentBottom="true"
+        ads:adUnitId="@string/banner_ad_unit_id" />
+
+</RelativeLayout>
