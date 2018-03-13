@@ -86,10 +86,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/next_game"
-        android:padding="10dp"
+        android:padding="15dp"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:background="@drawable/button_round"
+        android:textSize="20dp"
+        android:background="@drawable/button_next"
         android:text="NEXT"
         tools:ignore="UnknownId" />
 </LinearLayout>
