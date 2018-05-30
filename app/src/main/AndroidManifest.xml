@@ -28,7 +28,10 @@
             </intent-filter>
         </activity> <!-- Include the AdActivity configChanges and theme. -->
 
-        <activity android:name=".Activity.GameActivity"></activity>
+        <activity android:name=".Activity.LevelActivity"></activity>
+
+        <activity android:name=".Activity.GameActivity"
+            android:theme="@style/AppThemeGame"></activity>
         <activity android:name=".Activity.PopupActivity"/>
     </application>
 

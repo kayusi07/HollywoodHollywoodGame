@@ -19,6 +19,7 @@
             android:background="@drawable/button_round"
             android:layout_marginLeft="5dp"
             android:enabled="false"
+            android:textSize="20dp"
             android:text="A"/>
 
         <Button
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:background="@drawable/button_round"
             android:layout_marginRight="5dp"
             android:contentDescription="B"
@@ -37,10 +38,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="C"
             android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"              
+            android:background="@drawable/button_round"
             android:text="C"/>
 
         <Button
@@ -48,9 +49,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="D"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="D"/>
 
         <Button
@@ -58,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:enabled="false"
             android:text="E"/>
 
@@ -67,9 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="F"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="F"/>
 
         <Button
@@ -77,9 +78,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="G"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="G"/>
 
         <Button
@@ -87,9 +88,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="H"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="H"/>
 
         <Button
@@ -97,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:enabled="false"
             android:text="I"/>
     </LinearLayout>
@@ -113,10 +114,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="J"
             android:layout_marginLeft="5dp"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="J"/>
 
         <Button
@@ -124,9 +125,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="K"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="K"/>
 
         <Button
@@ -134,9 +135,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="L"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="L"/>
 
         <Button
@@ -144,9 +145,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="M"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="M"/>
 
         <Button
@@ -154,9 +155,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="N"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="N"/>
 
         <Button
@@ -164,7 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:enabled="false"
             android:text="O"/>
 
@@ -173,8 +174,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="P"
             android:text="P"/>
 
@@ -183,9 +184,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:contentDescription="Q"
-            android:onClick="onClickBtn"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:text="Q"/>
 
 
@@ -202,8 +203,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:layout_marginLeft="5dp"
             android:contentDescription="R"
             android:text="R"/>
@@ -213,8 +214,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="S"
             android:text="S"/>
 
@@ -223,8 +224,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="T"
             android:text="T"/>
 
@@ -233,7 +234,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
+            android:background="@drawable/button_round"
             android:enabled="false"
             android:text="U"/>
 
@@ -242,8 +243,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="V"
             android:text="V"/>
 
@@ -252,8 +253,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="W"
             android:text="W"/>
 
@@ -262,8 +263,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="X"
             android:text="X"/>
 
@@ -272,8 +273,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="Y"
             android:text="Y"/>
 
@@ -282,8 +283,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="Z"
             android:text="Z"/>
 
@@ -301,8 +302,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="0"
             android:layout_marginLeft="5dp"
             android:text="0"/>
@@ -312,8 +313,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="1"
             android:text="1"/>
 
@@ -322,8 +323,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="2"
             android:text="2"/>
 
@@ -332,8 +333,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="3"
             android:text="3"/>
 
@@ -342,8 +343,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="4"
             android:text="4"/>
 
@@ -352,8 +353,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="5"
             android:text="5"/>
 
@@ -362,8 +363,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="6"
             android:text="6"/>
 
@@ -372,8 +373,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="7"
             android:text="7"/>
 
@@ -382,8 +383,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="8"
             android:text="8"/>
 
@@ -392,8 +393,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" android:layout_marginRight="5dp"
-            android:background="@drawable/button_round"   
-            android:onClick="onClickBtn"
+            android:background="@drawable/button_round"
+            android:onClick="onClickBtn" android:textSize="20dp"
             android:contentDescription="9"
             android:text="9"/>
 

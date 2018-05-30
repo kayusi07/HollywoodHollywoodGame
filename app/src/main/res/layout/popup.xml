@@ -83,16 +83,17 @@
     </RelativeLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/next_game"
-        android:padding="15dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:background="@drawable/button_next"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:background="@drawable/custom_option"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_centerInParent="true"
         android:text="NEXT"
-        tools:ignore="UnknownId" />
+        android:textColor="#fff"
+        android:textSize="40dp" />
 </LinearLayout>
 
     <!-- view for AdMob Banner Ad -->

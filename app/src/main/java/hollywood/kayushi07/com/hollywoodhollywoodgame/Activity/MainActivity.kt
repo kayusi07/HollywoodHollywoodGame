@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         b_easy.setOnClickListener{
             //            Toast.makeText(this, TOAST_TEXT, Toast.LENGTH_LONG).show()
 
-            val i = Intent(this, GameActivity::class.java);
+            val i = Intent(this, LevelActivity::class.java);
             startActivity(i);
         }
     }
