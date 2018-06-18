@@ -2,6 +2,8 @@ package hollywood.kayushi07.com.hollywoodhollywoodgame.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,9 +14,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Activity.Dummy;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Activity.GameActivity;
+import hollywood.kayushi07.com.hollywoodhollywoodgame.Model.Level;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Model.Model;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.R;
 
@@ -24,21 +28,14 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private ArrayList<Model> dataSet;
     Context mContext;
-    int total_types;
+    int total_types, listLayoutRes;
+    SQLiteDatabase mDatabase;
 
-    public static class TextTypeViewHolder extends RecyclerView.ViewHolder {
-
-
-        TextView txtType;
-        CardView cardView;
-
-        public TextTypeViewHolder(View itemView) {
-            super(itemView);
-
-            this.txtType = (TextView) itemView.findViewById(R.id.type);
-            this.cardView = (CardView) itemView.findViewById(R.id.card_view);
-
-        }
+    public MultiViewTypeAdapter(ArrayList<Model> data, Context context, SQLiteDatabase mDatabase) {
+        this.dataSet = data;
+        this.mContext = context;
+        total_types = dataSet.size();
+        this.mDatabase = mDatabase;
 
     }
 
@@ -59,36 +56,25 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public static class OpenLevelViewHolder extends RecyclerView.ViewHolder {
-
-
-        TextView txtType;
-        Button fab;
+        TextView txtLevel, txtPoints, txtMovies;
+        Button start;
 
         public OpenLevelViewHolder(View itemView) {
             super(itemView);
-
-            this.txtType = (TextView) itemView.findViewById(R.id.type);
-            this.fab = (Button) itemView.findViewById(R.id.start);
-
+            this.txtLevel = (TextView) itemView.findViewById(R.id.level_id);
+            this.txtPoints = (TextView) itemView.findViewById(R.id.points_count);
+            this.txtMovies = (TextView) itemView.findViewById(R.id.movie_count);
+            this.start = (Button) itemView.findViewById(R.id.start);
         }
-
     }
 
-    public MultiViewTypeAdapter(ArrayList<Model> data, Context context) {
-        this.dataSet = data;
-        this.mContext = context;
-        total_types = dataSet.size();
-
-    }
+   
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view;
         switch (viewType) {
-            case Model.TEXT_TYPE:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.name_level, parent, false);
-                return new TextTypeViewHolder(view);
             case Model.CLOSED_LEVEL:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.closed_level, parent, false);
                 return new ClosedLevelViewHolder(view);
@@ -107,10 +93,8 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         switch (dataSet.get(position).type) {
             case 0:
-                return Model.TEXT_TYPE;
-            case 1:
                 return Model.CLOSED_LEVEL;
-            case 2:
+            case 1:
                 return Model.OPEN_LEVEL;
             default:
                 return -1;
@@ -125,19 +109,16 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
         Model object = dataSet.get(listPosition);
         if (object != null) {
             switch (object.type) {
-                case Model.TEXT_TYPE:
-                    ((TextTypeViewHolder) holder).txtType.setText(object.text);
-
-                    break;
                 case Model.CLOSED_LEVEL:
                     ((ClosedLevelViewHolder) holder).txtType.setText(object.text);
 //                    ((ClosedLevelViewHolder) holder).image.setImageResource(object.data);
                     break;
                 case Model.OPEN_LEVEL:
+                    ((OpenLevelViewHolder) holder).txtLevel.setText(object.text);
+                    ((OpenLevelViewHolder) holder).txtPoints.setText(" "+object.score);
+                    ((OpenLevelViewHolder) holder).txtMovies.setText(" "+object.movies);
 
-
-                    ((OpenLevelViewHolder) holder).txtType.setText(object.text);
-                    ((OpenLevelViewHolder) holder).fab.setOnClickListener(new View.OnClickListener(){
+                    ((OpenLevelViewHolder) holder).start.setOnClickListener(new View.OnClickListener(){
                         @Override
                         public void onClick(View v) {
 
@@ -187,6 +168,22 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemCount() {
         return dataSet.size();
     }
+
+//    private void loadLevelsFromDatabase() {
+//        Cursor cursorLevels = mDatabase.rawQuery("SELECT * FROM levels", null);
+//        if (cursorLevels.moveToFirst()) {
+//            levelList.clear();
+//            do {
+//                levelList.add(new Level(
+//                        cursorLevels.getInt(0),
+//                        cursorLevels.getInt(1),
+//                        cursorLevels.getInt(2)
+//                ));
+//            } while (cursorLevels.moveToNext());
+//        }
+//        cursorLevels.close();
+//        notifyDataSetChanged();
+//    }
 
 
 }

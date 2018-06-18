@@ -12,4 +12,6 @@ public class Dummy {
 
     public static int current_level = 0;
 
+    //level 1 : movien seen : total score
+
 }
