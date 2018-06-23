@@ -3,6 +3,7 @@ package hollywood.kayushi07.com.hollywoodhollywoodgame.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,9 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.ArrayList;
+
+import hollywood.kayushi07.com.hollywoodhollywoodgame.Model.DatabaseHandler;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.R;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Receiver.NetworkStateReceiver;
 
@@ -25,6 +29,7 @@ public class PopupActivity extends AppCompatActivity implements NetworkStateRece
 
     private NetworkStateReceiver networkStateReceiver;
     AdView mAdView;
+    int level;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,16 +42,28 @@ public class PopupActivity extends AppCompatActivity implements NetworkStateRece
 
         mAdView = (AdView) findViewById(R.id.adViewpop);
 
+
         Intent intent = getIntent();
         int score = intent.getIntExtra("Score",1);
-
+        level = intent.getIntExtra("Level",1);
         final RatingBar rate = (RatingBar) findViewById(R.id.rate);
         rate.setRating(score/2);
+
+        DatabaseHandler mDB = new DatabaseHandler(getApplicationContext());
+//        SQLiteDatabase db = mDB.getReadableDatabase();
+
+        int last_score;
+        last_score = mDB.getScore(level);
+
+        int f_score;
+        f_score= score + last_score;
+        mDB.updateScore(level, f_score);
 
         TextView txtScore = (TextView) findViewById(R.id.txt_status);
         TextView txtTotalScore = (TextView) findViewById(R.id.txt_total_score);
         TextView txtHighestScore = (TextView) findViewById(R.id.txt_high_score);
-
+        TextView txtLevel = (TextView) findViewById(R.id.level);
+        txtLevel.setText("LEVEL " + level);
 
         Button next = (Button) findViewById(R.id.next_game);
 
@@ -112,7 +129,7 @@ public class PopupActivity extends AppCompatActivity implements NetworkStateRece
             editor.putInt("highScore", high_score);}
 
         editor.apply();
-        txtHighestScore.setText("" + high_score);
+        txtHighestScore.setText("" + f_score);
 
 
     }

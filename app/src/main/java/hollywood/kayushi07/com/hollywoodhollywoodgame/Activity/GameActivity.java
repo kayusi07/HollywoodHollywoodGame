@@ -59,6 +59,7 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
     ImageButton b_hint;
     RewardedVideoAd mAd;
     ProgressDialog progressDoalog;
+    int level;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,7 +67,7 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
         setContentView(R.layout.game_page);
 
 //        Intent intent = getIntent();
-        int level = Dummy.getCurrent_level();//intent.getIntExtra("Level",1);
+        level = Dummy.getCurrent_level();//intent.getIntExtra("Level",1);
 //        level++;
 
         networkStateReceiver = new NetworkStateReceiver();
@@ -282,6 +283,7 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
                     bollywood=0;
                     score=1;
                     Intent i = new Intent(this, PopupActivity.class);
+                    i.putExtra("Level", level);
                     i.putExtra("Score",score);
                     startActivity(i);
                     finish();
@@ -293,6 +295,8 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
         {
             Intent i = new Intent(this, PopupActivity.class);
             i.putExtra("Score",score);
+            i.putExtra("Level", level);
+
             startActivity(i);
             finish();
 
@@ -394,6 +398,8 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
         if(!f_movie.contains("_"))
         {
             Intent i = new Intent(this, PopupActivity.class);
+            i.putExtra("Level", level);
+
             i.putExtra("Score",score);
             startActivity(i);
             finish();

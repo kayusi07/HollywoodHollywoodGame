@@ -29,13 +29,13 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     private ArrayList<Model> dataSet;
     Context mContext;
     int total_types, listLayoutRes;
-    SQLiteDatabase mDatabase;
+//    SQLiteDatabase mDatabase;
 
-    public MultiViewTypeAdapter(ArrayList<Model> data, Context context, SQLiteDatabase mDatabase) {
+    public MultiViewTypeAdapter(ArrayList<Model> data, Context context) {
         this.dataSet = data;
         this.mContext = context;
         total_types = dataSet.size();
-        this.mDatabase = mDatabase;
+//        this.mDatabase = mDatabase;
 
     }
 
