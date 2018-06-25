@@ -56,16 +56,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             //this time it has two parameters
             //first is the sql string and second is the parameters that is to be binded with the query
 
-            db.execSQL(insertSQL, new Integer[]{1, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{2, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{3, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{4, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{5, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{6, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{7, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{8, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{9, 0, 0});
-            db.execSQL(insertSQL, new Integer[]{10, 0, 0});
+            db.execSQL(insertSQL, new Integer[]{1, 0, 0, 100});
+            db.execSQL(insertSQL, new Integer[]{2, 0, 0, 50});
+            db.execSQL(insertSQL, new Integer[]{3, 0, 0, 200});
+            db.execSQL(insertSQL, new Integer[]{4, 0, 0, 150});
+            db.execSQL(insertSQL, new Integer[]{5, 0, 0, 200});
+            db.execSQL(insertSQL, new Integer[]{6, 0, 0, 150});
+            db.execSQL(insertSQL, new Integer[]{7, 0, 0, 150});
+            db.execSQL(insertSQL, new Integer[]{8, 0, 0, 200});
+            db.execSQL(insertSQL, new Integer[]{9, 0, 0, 200});
+            db.execSQL(insertSQL, new Integer[]{10, 0, 0, 150});
 //            db.close();
         } catch (Exception e) {
         }
@@ -82,8 +82,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(sql, new Integer[]{score, id});
     }
 
-    public int getScore(int id) {
-        int scores = 0;
+    public int[] getScore(int id) {
+        int scores = 0, unlockScore = 100;
         String selectQuery = "SELECT  * FROM " + TABLE_NAME + " where " + KEY_ID + " = " + id;
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -91,9 +91,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 scores = cursor.getInt(2);
+                unlockScore = cursor.getInt(3);
             } while (cursor.moveToNext());
         }
-        return scores;
+        int sc[] = {scores, unlockScore};
+        return sc;
     }
 
     public ArrayList<Model> getAllLevels()
@@ -110,8 +112,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             id = cursorLevels.getInt(0);
             movies = cursorLevels.getInt(1);
             score = cursorLevels.getInt(2);
-            unlock_score = cursorLevels.getInt(2);
-            levelListFinal.add(new Model(Model.OPEN_LEVEL, "LEVEL " + id, id, movies, score, unlock_score));
+            unlock_score = cursorLevels.getInt(3);
+
+            if(id==1)
+            {
+                levelListFinal.add(new Model(Model.OPEN_LEVEL, "LEVEL " + id, id, movies, score, unlock_score));
+            }
+            else {
+                if (unlock_score >= score)
+                    levelListFinal.add(new Model(Model.CLOSED_LEVEL, "LEVEL " + id, id, movies, score, unlock_score));
+                else
+                    levelListFinal.add(new Model(Model.OPEN_LEVEL, "LEVEL " + id, id, movies, score, unlock_score));
+            }
+
         } while (cursorLevels.moveToNext());
     }
         cursorLevels.close();

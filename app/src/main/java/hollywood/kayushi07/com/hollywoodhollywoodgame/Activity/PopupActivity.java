@@ -52,12 +52,17 @@ public class PopupActivity extends AppCompatActivity implements NetworkStateRece
         DatabaseHandler mDB = new DatabaseHandler(getApplicationContext());
 //        SQLiteDatabase db = mDB.getReadableDatabase();
 
-        int last_score;
-        last_score = mDB.getScore(level);
+        int[] sc;
+        sc = mDB.getScore(level);
+        int total_score, unlock_score;
+        total_score = sc[0];
+        unlock_score = sc[1];
 
-        int f_score;
-        f_score= score + last_score;
+        int f_score, diff_score;
+        f_score= score + total_score;
         mDB.updateScore(level, f_score);
+
+        diff_score = unlock_score - f_score;
 
         TextView txtScore = (TextView) findViewById(R.id.txt_status);
         TextView txtTotalScore = (TextView) findViewById(R.id.txt_total_score);
@@ -112,24 +117,30 @@ public class PopupActivity extends AppCompatActivity implements NetworkStateRece
         });
 
 
-        int total_Score;
+//        int total_Score;
+//        SharedPreferences prefs = getSharedPreferences("Bollywood Score", MODE_PRIVATE);
+//        SharedPreferences.Editor editor =  prefs.edit();
+//        int scoreText = prefs.getInt("gameScore", 0);
+//        int high_score = prefs.getInt("highScore",0);
+//       total_Score = score + scoreText;
+//        editor.putInt("gameScore", total_Score);
+//        if(total_Score>high_score){
+//            high_score=total_Score;
+//            editor.putInt("highScore", high_score);}//
+//        editor.apply();
 
-        SharedPreferences prefs = getSharedPreferences("Bollywood Score", MODE_PRIVATE);
 
-        SharedPreferences.Editor editor =  prefs.edit();
-        int scoreText = prefs.getInt("gameScore", 0);
-        int high_score = prefs.getInt("highScore",0);
-       total_Score = score + scoreText;
-        editor.putInt("gameScore", total_Score);
+        txtTotalScore.setText("" + f_score);//total_Score);
 
-        txtTotalScore.setText("" + total_Score);//total_Score);
+        String nextLevelStr;
+        if(diff_score <= 0)
+        {
+            nextLevelStr = " ";
+        }
+        else
+        nextLevelStr = "You need " + diff_score + " more points to unlock next level.";
 
-        if(total_Score>high_score){
-            high_score=total_Score;
-            editor.putInt("highScore", high_score);}
-
-        editor.apply();
-        txtHighestScore.setText("" + f_score);
+        txtHighestScore.setText(nextLevelStr);
 
 
     }

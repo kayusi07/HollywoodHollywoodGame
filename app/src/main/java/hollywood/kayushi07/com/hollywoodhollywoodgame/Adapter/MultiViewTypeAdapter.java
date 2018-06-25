@@ -1,5 +1,6 @@
 package hollywood.kayushi07.com.hollywoodhollywoodgame.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -40,19 +41,15 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public static class ClosedLevelViewHolder extends RecyclerView.ViewHolder {
-
-
-        TextView txtType;
+        TextView txtType, txtMsg;
 //        ImageView image;
 
         public ClosedLevelViewHolder(View itemView) {
             super(itemView);
-
             this.txtType = (TextView) itemView.findViewById(R.id.type);
+            this.txtMsg = (TextView) itemView.findViewById(R.id.levelmsg);
 //            this.image = (ImageView) itemView.findViewById(R.id.background);
-
         }
-
     }
 
     public static class OpenLevelViewHolder extends RecyclerView.ViewHolder {
@@ -107,10 +104,22 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int listPosition) {
 
         Model object = dataSet.get(listPosition);
+
         if (object != null) {
             switch (object.type) {
                 case Model.CLOSED_LEVEL:
+
+                    Model object1 = dataSet.get(listPosition - 1);
+
+
+                    int unlock_score, total_score, diff_score;
+                    unlock_score = object1.unlock_score;
+                    total_score = object1.score;
+                    diff_score = unlock_score - total_score;
+                    String msg = "Score " + diff_score + " points to unlock Movie set.";
+
                     ((ClosedLevelViewHolder) holder).txtType.setText(object.text);
+                    ((ClosedLevelViewHolder) holder).txtMsg.setText(msg);
 //                    ((ClosedLevelViewHolder) holder).image.setImageResource(object.data);
                     break;
                 case Model.OPEN_LEVEL:
@@ -129,8 +138,9 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
                             Dummy.setCurrent_level(pos+1);
 //                            pos++;
 //                            i.putExtra("Level",pos);
-                               mContext.startActivity(i);
-                        }
+                            mContext.startActivity(i);
+//                            ((Activity)mContext).finish();
+                            }
                     });
 
 
