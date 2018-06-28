@@ -106,6 +106,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     Cursor cursorLevels = db.rawQuery("SELECT * FROM levels", null);
     int id, movies, score, unlock_score;
     //if the cursor has some data
+        int prev_diff_score = 0;
+
         if(cursorLevels.moveToFirst())
         {
         do {
@@ -116,13 +118,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
             if(id==1)
             {
-                levelListFinal.add(new Model(Model.OPEN_LEVEL, "LEVEL " + id, id, movies, score, unlock_score));
+                levelListFinal.add(new Model(Model.OPEN_LEVEL, "Level " + id, id, movies, score, unlock_score));
+                prev_diff_score = unlock_score - score;
             }
             else {
-                if (unlock_score >= score)
-                    levelListFinal.add(new Model(Model.CLOSED_LEVEL, "LEVEL " + id, id, movies, score, unlock_score));
+//               diff_score = unlock_score - score;
+//System.out.println("Id " + id + " unlock " + unlock_score + " score " + score + " diff " + prev_diff_score);
+                if (prev_diff_score > 0)
+                    levelListFinal.add(new Model(Model.CLOSED_LEVEL, "Level " + id, id, movies, score, unlock_score));
                 else
-                    levelListFinal.add(new Model(Model.OPEN_LEVEL, "LEVEL " + id, id, movies, score, unlock_score));
+                    levelListFinal.add(new Model(Model.OPEN_LEVEL, "Level " + id, id, movies, score, unlock_score));
+
+                prev_diff_score = unlock_score - score;
+
             }
 
         } while (cursorLevels.moveToNext());

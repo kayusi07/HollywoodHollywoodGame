@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Movie;
 import android.media.MediaPlayer;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -53,14 +54,14 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public static class OpenLevelViewHolder extends RecyclerView.ViewHolder {
-        TextView txtLevel, txtPoints, txtMovies;
+        TextView txtLevel, txtPoints;//, txtMovies;
         Button start;
 
         public OpenLevelViewHolder(View itemView) {
             super(itemView);
             this.txtLevel = (TextView) itemView.findViewById(R.id.level_id);
             this.txtPoints = (TextView) itemView.findViewById(R.id.points_count);
-            this.txtMovies = (TextView) itemView.findViewById(R.id.movie_count);
+//            this.txtMovies = (TextView) itemView.findViewById(R.id.movie_count);
             this.start = (Button) itemView.findViewById(R.id.start);
         }
     }
@@ -116,7 +117,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
                     unlock_score = object1.unlock_score;
                     total_score = object1.score;
                     diff_score = unlock_score - total_score;
-                    String msg = "Score " + diff_score + " points to unlock Movie set.";
+                    String msg = "Score " + diff_score + " points to unlock movie set.";
 
                     ((ClosedLevelViewHolder) holder).txtType.setText(object.text);
                     ((ClosedLevelViewHolder) holder).txtMsg.setText(msg);
@@ -125,7 +126,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
                 case Model.OPEN_LEVEL:
                     ((OpenLevelViewHolder) holder).txtLevel.setText(object.text);
                     ((OpenLevelViewHolder) holder).txtPoints.setText(" "+object.score);
-                    ((OpenLevelViewHolder) holder).txtMovies.setText(" "+object.movies);
+//                    ((OpenLevelViewHolder) holder).txtMovies.setText(" "+object.movies);
 
                     ((OpenLevelViewHolder) holder).start.setOnClickListener(new View.OnClickListener(){
                         @Override
@@ -178,22 +179,4 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemCount() {
         return dataSet.size();
     }
-
-//    private void loadLevelsFromDatabase() {
-//        Cursor cursorLevels = mDatabase.rawQuery("SELECT * FROM levels", null);
-//        if (cursorLevels.moveToFirst()) {
-//            levelList.clear();
-//            do {
-//                levelList.add(new Level(
-//                        cursorLevels.getInt(0),
-//                        cursorLevels.getInt(1),
-//                        cursorLevels.getInt(2)
-//                ));
-//            } while (cursorLevels.moveToNext());
-//        }
-//        cursorLevels.close();
-//        notifyDataSetChanged();
-//    }
-
-
 }
