@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.google.android.gms.ads.AdRequest
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import com.google.android.gms.ads.AdView
 import hollywood.kayushi07.com.hollywoodhollywoodgame.R

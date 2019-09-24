@@ -5,9 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -52,14 +56,22 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
     TextView game_txt;
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
-    int count, randomMovie, bollywood=0, score=10;
+    int count, level, randomMovie, bollywood=0, score=10;
     String f_movie, lowerMovie;
     Animation animBounce, animFade;
     private AdView mAdView;
     ImageButton b_hint;
     RewardedVideoAd mAd;
     ProgressDialog progressDoalog;
-    int level;
+
+    private SoundPool soundPool;
+    private AudioManager audioManager;
+    // Maximumn sound stream.
+    private static final int MAX_STREAMS = 5;
+    // Stream type.
+    private static final int streamType = AudioManager.STREAM_MUSIC;
+    int soundIdGun;
+    private float volume;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -221,6 +233,54 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
         char[] charArrayWord = current_movie.toCharArray();
 
         if (lowerMovie.contains(alphabet)) {
+
+            // AudioManager audio settings for adjusting the volume
+            audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+
+            // Current volumn Index of particular stream type.
+            float currentVolumeIndex = (float) audioManager.getStreamVolume(streamType);
+
+            // Get the maximum volume index for a particular stream type.
+            float maxVolumeIndex  = (float) audioManager.getStreamMaxVolume(streamType);
+
+            // Volumn (0 --> 1)
+            this.volume = currentVolumeIndex / maxVolumeIndex;
+
+            // Suggests an audio stream whose volume should be changed by
+            // the hardware volume controls.
+            this.setVolumeControlStream(streamType);
+
+            // For Android SDK >= 21
+            if (Build.VERSION.SDK_INT >= 21 ) {
+
+                AudioAttributes audioAttrib = new AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_GAME)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .build();
+
+                SoundPool.Builder builder= new SoundPool.Builder();
+                builder.setAudioAttributes(audioAttrib).setMaxStreams(MAX_STREAMS);
+
+                this.soundPool = builder.build();
+            }
+            // for Android SDK < 21
+            else {
+                // SoundPool(int maxStreams, int streamType, int srcQuality)
+                this.soundPool = new SoundPool(MAX_STREAMS, AudioManager.STREAM_MUSIC, 0);
+            }
+            // Load sound file (gun.wav) into SoundPool.
+            soundIdGun = this.soundPool.load(this, R.raw.gun,1);
+            // When Sound Pool load complete.
+
+            this.soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+                @Override
+                public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                    float leftVolumn = volume;
+                    float rightVolumn = volume;
+                    // Play sound of gunfire. Returns the ID of the new stream.
+                    soundPool.play(soundIdGun,leftVolumn, rightVolumn, 1, 0, 1f);                }
+            });
+
 
             for (int in = -1; (in = lowerMovie.indexOf(acc, in)) != -1; in++) {
                 charArrayWord[in] = acc;
@@ -438,6 +498,11 @@ public class GameActivity extends AppCompatActivity implements NetworkStateRecei
         {
             e.printStackTrace();
         }
+
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
 
     }
 }

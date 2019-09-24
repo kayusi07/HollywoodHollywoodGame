@@ -33,6 +33,11 @@
         <activity android:name=".Activity.GameActivity"
             android:theme="@style/AppThemeGame"></activity>
         <activity android:name=".Activity.PopupActivity"/>
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true"/>
     </application>
-
+    <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-5152778234781012~8599524801"/>
 </manifest>

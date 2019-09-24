@@ -1,17 +1,14 @@
 package hollywood.kayushi07.com.hollywoodhollywoodgame.Activity;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Adapter.*;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Model.*;
@@ -26,6 +23,7 @@ public class LevelActivity extends AppCompatActivity {
     MultiViewTypeAdapter adapter;
     LinearLayoutManager linearLayoutManager;
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

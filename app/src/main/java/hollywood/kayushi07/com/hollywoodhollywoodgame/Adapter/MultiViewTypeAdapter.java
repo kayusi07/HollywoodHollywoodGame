@@ -1,26 +1,19 @@
 package hollywood.kayushi07.com.hollywoodhollywoodgame.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Movie;
-import android.media.MediaPlayer;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
-import java.util.List;
 
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Activity.Dummy;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Activity.GameActivity;
-import hollywood.kayushi07.com.hollywoodhollywoodgame.Model.Level;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.Model.Model;
 import hollywood.kayushi07.com.hollywoodhollywoodgame.R;
 
